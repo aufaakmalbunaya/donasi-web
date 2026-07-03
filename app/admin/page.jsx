@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
+const formStyle = { maxWidth: 360, margin: '40px auto', fontFamily: 'sans-serif', display: 'grid', gap: 8 }
+
 export default function AdminPage() {
   const [session, setSession] = useState(null)
   const [email, setEmail] = useState('')
@@ -32,7 +34,7 @@ export default function AdminPage() {
 
   if (!session) {
     return (
-      <form onSubmit={login} style=maxWidth:360, margin:'40px auto', fontFamily:'sans-serif', display:'grid', gap:8>
+      <form onSubmit={login} style={formStyle}>
         <h1>Login Admin</h1>
         <input placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} />
         <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
@@ -43,7 +45,7 @@ export default function AdminPage() {
   }
 
   return (
-    <form onSubmit={updateDonasi} style=maxWidth:360, margin:'40px auto', fontFamily:'sans-serif', display:'grid', gap:8>
+    <form onSubmit={updateDonasi} style={formStyle}>
       <h1>Dashboard Admin</h1>
       <input type="number" placeholder="Total terkumpul (Rp)" value={jumlah} onChange={e=>setJumlah(e.target.value)} />
       <button type="submit">Perbarui Donasi</button>
