@@ -1,26 +1,93 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --teal: #2f8f83;
+  --teal-dark: #256b62;
+  --yellow: #f5c451;
+  --ink: #1f2d2b;
+  --muted: #6b7d7a;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, #d7f0ef 0%, #bfe3e0 45%, #a9d8cf 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
+.page {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px; gap: 16px;
+}
+
+/* ===== Carousel foto kucing (bisa digeser) ===== */
+.carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  scrollbar-width: none;
+  margin: 2px 0;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eaf1f0;
+}
+.slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slide-empty {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 13px; line-height: 1.5; text-align: center;
+  padding: 24px; border: 2px dashed #bcd4d0;
+}
+
+.card {
+  width: 100%; max-width: 440px;
+  background: #fff; border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 45px rgba(37, 107, 98, 0.18);
+  display: flex; flex-direction: column; gap: 14px;
+  text-align: center;
+}
+.badge {
+  align-self: center; background: #e6f4f2; color: var(--teal-dark);
+  font-weight: 600; font-size: 13px; padding: 6px 14px; border-radius: 999px;
+}
+.title { margin: 4px 0 0; font-size: 24px; color: var(--teal-dark); }
+.subtitle { margin: 0; color: var(--muted); font-size: 15px; }
+.amount-box { display: flex; flex-direction: column; gap: 2px; margin: 10px 0 4px; }
+.label { font-size: 13px; color: var(--muted); }
+.amount { font-size: 40px; font-weight: 800; color: var(--teal); line-height: 1.1; }
+.target { font-size: 14px; color: var(--muted); }
+.progress { height: 16px; background: #eaf1f0; border-radius: 999px; overflow: hidden; }
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--teal), #47b3a3);
+  border-radius: 999px; transition: width .6s ease;
+}
+.progress-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.updated { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+.loading { color: var(--muted); }
+.foot { color: var(--teal-dark); font-size: 14px; font-weight: 500; text-align: center; }
+.input {
+  width: 100%; padding: 12px 14px; border: 1.5px solid #d7e4e2;
+  border-radius: 12px; font-size: 15px; outline: none;
+}
+.input:focus { border-color: var(--teal); }
+.field-label { text-align: left; font-size: 13px; color: var(--muted); }
+.btn {
+  width: 100%; padding: 12px; border: none; border-radius: 12px;
+  background: var(--teal); color: #fff; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: background .2s;
+}
+.btn:hover { background: var(--teal-dark); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--muted); }
+.btn-ghost:hover { background: #f0f5f4; }
+.msg { font-size: 14px; margin: 4px 0 0; }

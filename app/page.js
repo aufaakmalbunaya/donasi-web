@@ -5,7 +5,7 @@ import CatCarousel from '@/components/CatCarousel'
 
 const rupiah = (n) => 'Rp' + Number(n || 0).toLocaleString('id-ID')
 
-export default function DonasiPage() {
+export default function HomePage() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
