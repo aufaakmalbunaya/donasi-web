@@ -34,6 +34,7 @@ export default function HomePage() {
 
   const persen = Math.min(100, Math.round((data.terkumpul / data.target) * 100))
   const sisa = Math.max(0, data.target - data.terkumpul)
+  const barFill = { width: persen + '%' }
 
   return (
     <main className="page">
@@ -49,7 +50,7 @@ export default function HomePage() {
         </div>
 
         <div className="progress">
-          <div className="progress-fill" style= width: persen + '%'  />
+          <div className="progress-fill" style={barFill} />
         </div>
         <div className="progress-meta">
           <span>{persen}% tercapai</span>
