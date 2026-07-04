@@ -8,8 +8,8 @@
 //  3. Simpan, commit, lalu push. Kartu otomatis bisa digeser.
 // ============================================================
 const fotos = [
-  // '/Roni.jpg',
-  // '/Fuad.jpg',
+  '/Roni.jpg',
+  '/Fuad.jpg',
 ]
 
 export default function CatCarousel() {
