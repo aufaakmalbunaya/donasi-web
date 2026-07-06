@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/print", "destination": "https://peradaban-print.vercel.app/print" },
+    { "source": "/print/:path*", "destination": "https://peradaban-print.vercel.app/print/:path*" }
+  ]
+}
